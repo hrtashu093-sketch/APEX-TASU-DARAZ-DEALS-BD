@@ -1,0 +1,336 @@
+
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>APEX TASU DARAZ SHOP</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f6fb;
+  color: #172033;
+}
+
+header {
+  background: #101b36;
+  color: white;
+  padding: 18px 15px;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 23px;
+  color: #ffb800;
+}
+
+header p {
+  margin-top: 7px;
+  font-size: 13px;
+}
+
+.search {
+  padding: 15px;
+  background: white;
+}
+
+.search input {
+  width: 100%;
+  padding: 13px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 15px;
+}
+
+.hero {
+  margin: 15px;
+  padding: 28px 18px;
+  border-radius: 15px;
+  background: linear-gradient(135deg, #101b36, #1769e0);
+  color: white;
+}
+
+.hero h2 {
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.section-title {
+  margin: 22px 15px 12px;
+  font-size: 20px;
+}
+
+.categories {
+  display: flex;
+  gap: 9px;
+  overflow-x: auto;
+  padding: 0 15px 10px;
+}
+
+.categories button {
+  flex-shrink: 0;
+  border: none;
+  background: white;
+  padding: 11px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.categories button.active {
+  background: #1769e0;
+  color: white;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  padding: 10px 12px 25px;
+}
+
+.card {
+  background: white;
+  border-radius: 13px;
+  overflow: hidden;
+  box-shadow: 0 3px 12px #0000000c;
+}
+
+.card img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  background: #e8edf5;
+}
+
+.card-content {
+  padding: 11px;
+}
+
+.card h3 {
+  font-size: 15px;
+  margin-bottom: 7px;
+}
+
+.card p {
+  font-size: 12px;
+  color: #68738a;
+  line-height: 1.5;
+}
+
+.price {
+  font-weight: bold;
+  color: #e65b00;
+  font-size: 16px;
+  margin: 10px 0;
+}
+
+.buy {
+  display: block;
+  text-decoration: none;
+  background: #ffb800;
+  color: #172033;
+  text-align: center;
+  padding: 11px 5px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.notice {
+  background: white;
+  margin: 0 12px 20px;
+  padding: 15px;
+  border-radius: 12px;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+footer {
+  background: #101b36;
+  color: white;
+  text-align: center;
+  padding: 24px 12px;
+  font-size: 13px;
+  line-height: 1.9;
+}
+
+footer a {
+  color: #ffcf45;
+}
+
+.empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 30px 10px;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>APEX TASU</h1>
+  <p>DARAZ SHOP • Smart Deals, Better Choices</p>
+</header>
+
+<div class="search">
+  <input id="searchInput"
+    type="search"
+    placeholder="🔍 প্রোডাক্ট খুঁজুন..."
+    aria-label="প্রোডাক্ট খুঁজুন">
+</div>
+
+<section class="hero">
+  <h2>🔥 দারুণ সব ডিল এক জায়গায়!</h2>
+  <p>
+    স্মার্টওয়াচ, ইয়ারবাড, ব্যাগ ও দরকারি
+    গ্যাজেট খুঁজে নাও। পছন্দের প্রোডাক্ট
+    কিনতে Daraz-এ চলে যাও।
+  </p>
+</section>
+
+<h2 class="section-title">🛍️ ক্যাটেগরি</h2>
+
+<div class="categories">
+  <button class="active" data-category="সব">সব</button>
+  <button data-category="ঘড়ি">⌚ ঘড়ি</button>
+  <button data-category="ইয়ারবাড">🎧 ইয়ারবাড</button>
+  <button data-category="ব্যাগ">🎒 ব্যাগ</button>
+  <button data-category="গ্যাজেট">📱 গ্যাজেট</button>
+</div>
+
+<h2 class="section-title">⭐ জনপ্রিয় প্রোডাক্ট</h2>
+
+<div class="products" id="products">
+
+  <article class="card" data-category="ঘড়ি">
+    <img
+      src="https://placehold.co/500x500/edf1f7/172033?text=Smartwatch"
+      alt="স্মার্টওয়াচ">
+    <div class="card-content">
+      <h3>স্মার্টওয়াচ</h3>
+      <p>স্টাইলিশ ডিজাইন ও দৈনন্দিন ব্যবহারের জন্য।</p>
+      <div class="price">দাম দেখুন Daraz-এ</div>
+      <a class="buy" href="https://www.daraz.com.bd/"
+         target="_blank" rel="noopener">
+        Buy Now →
+      </a>
+    </div>
+  </article>
+
+  <article class="card" data-category="ইয়ারবাড">
+    <img
+      src="https://placehold.co/500x500/edf1f7/172033?text=Earbuds"
+      alt="ওয়্যারলেস ইয়ারবাড">
+    <div class="card-content">
+      <h3>ওয়্যারলেস ইয়ারবাড</h3>
+      <p>গান শোনা ও দৈনন্দিন ব্যবহারের গ্যাজেট।</p>
+      <div class="price">দাম দেখুন Daraz-এ</div>
+      <a class="buy" href="https://www.daraz.com.bd/"
+         target="_blank" rel="noopener">
+        Buy Now →
+      </a>
+    </div>
+  </article>
+
+  <article class="card" data-category="ব্যাগ">
+    <img
+      src="https://placehold.co/500x500/edf1f7/172033?text=Bag"
+      alt="ব্যাগ">
+    <div class="card-content">
+      <h3>স্টাইলিশ ব্যাগ</h3>
+      <p>ভ্রমণ, স্কুল বা দৈনন্দিন ব্যবহারের জন্য।</p>
+      <div class="price">দাম দেখুন Daraz-এ</div>
+      <a class="buy" href="https://www.daraz.com.bd/"
+         target="_blank" rel="noopener">
+        Buy Now →
+      </a>
+    </div>
+  </article>
+
+  <article class="card" data-category="গ্যাজেট">
+    <img
+      src="https://placehold.co/500x500/edf1f7/172033?text=Gadgets"
+      alt="মোবাইল গ্যাজেট">
+    <div class="card-content">
+      <h3>মোবাইল গ্যাজেট</h3>
+      <p>দৈনন্দিন কাজে দরকারি অ্যাক্সেসরিজ।</p>
+      <div class="price">দাম দেখুন Daraz-এ</div>
+      <a class="buy" href="https://www.daraz.com.bd/"
+         target="_blank" rel="noopener">
+        Buy Now →
+      </a>
+    </div>
+  </article>
+
+</div>
+
+<div class="notice">
+  <strong>📌 কেনার আগে:</strong><br>
+  Daraz-এর পেজে গিয়ে আসল দাম, রিভিউ,
+  বিক্রেতার তথ্য ও ডেলিভারি চার্জ যাচাই করো।
+  এখানে দেখানো প্রোডাক্টগুলো নমুনা।
+</div>
+
+<footer>
+  <h3>APEX TASU DARAZ SHOP</h3>
+  <p>তোমার পছন্দের ডিল, এক জায়গায়।</p>
+  <p>© 2026 APEX TASU DARAZ SHOP</p>
+</footer>
+
+<script>
+const searchInput = document.getElementById("searchInput");
+const cards = [...document.querySelectorAll(".card")];
+const categoryButtons =
+  document.querySelectorAll(".categories button");
+
+let selectedCategory = "সব";
+
+function filterProducts() {
+  const query = searchInput.value.toLowerCase().trim();
+
+  cards.forEach(card => {
+    const name = card.querySelector("h3")
+      .textContent.toLowerCase();
+
+    const category = card.dataset.category;
+    const matchesName = name.includes(query);
+    const matchesCategory =
+      selectedCategory === "সব" ||
+      category === selectedCategory;
+
+    card.style.display =
+      matchesName && matchesCategory ? "" : "none";
+  });
+}
+
+searchInput.addEventListener("input", filterProducts);
+
+categoryButtons.forEach(button => {
+  button.addEventListener("click", () => {
+    categoryButtons.forEach(item =>
+      item.classList.remove("active")
+    );
+
+    button.classList.add("active");
+    selectedCategory = button.dataset.category;
+    filterProducts();
+  });
+});
+</script>
+
+</body>
+</html>
